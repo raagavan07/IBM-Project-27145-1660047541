@@ -9,22 +9,30 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/homepage.css') }}"
     />
+    <link href="http://fonts.cdnfonts.com/css/oregon" rel="stylesheet" />
   </head>
   <body>
     <div class="header">
+      <img
+        src="/static/images/logor.png"
+        alt="Logo"
+        width="15%"
+        height="2000%"
+      />
       <h2>COVID-19 PLASMA DONATION</h2>
       <i class="fa fa-html5" aria-hidden="true"></i>
       <nav class="first">
         <ul class="nav_links">
           <li><a href="{{ url_for('homepage') }}">Home</a></li>
-          <li><a href="#">Donors</a></li>
-          <div class="dropdown">
+          <li><a href="{{ url_for('logdonordir')}}">Donor Directory</a></li>
+          <drp class="dropdown">
             <button class="dropbtn">{{ session["name"] }}</button>
-            <div class="dropdown-content">
-              <a href="#">Profile</a>
+            <cdrp class="dropdown-content">
+              <a href="{{ url_for('profile') }} ">Profile</a>
+              <a href="#">Change Password</a>
               <a href="{{ url_for('logout') }} ">Logout</a>
-            </div>
-          </div>
+            </cdrp>
+          </drp>
         </ul>
       </nav>
     </div>

@@ -1,5 +1,5 @@
 import ibm_db
-# e.g.: "54a2f15b-5c0f-46df-8954-7e38e612c2bd.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud"
+
 dsn_hostname = "98538591-7217-4024-b027-8baa776ffad1.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud"
 dsn_uid = "nqr09770"        # e.g. "abc12345"
 dsn_pwd = "Fz5zer4LtepyUXhn"      # e.g. "7dBZ3wWt9XN6$o0J"
@@ -30,6 +30,7 @@ try:
 
 except:
     print("Unable to Connect: ", ibm_db.conn_errormsg())
+
 
 # server = ibm_db.server_info(conn)
 # print("Server Info")

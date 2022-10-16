@@ -12,17 +12,23 @@
   </head>
   <body>
     <div class="header">
-      <h1>COVID-19 Plasma Donation</h1>
+      <img
+        src="/static/images/logor.png"
+        alt="Logo"
+        width="15%"
+        height="2000%"
+      />
+      <h2>COVID-19 PLASMA DONATION</h2>
       <i class="fa fa-html5" aria-hidden="true"></i>
       <nav class="first">
         <ul class="nav_links">
           <li><a href="{{ url_for('index') }}">Home</a></li>
-          <li><a href="#">Donors</a></li>
-          <li><a href="{{ url_for('login') }} ">Login</a></li>
+          <li><a href="{{ url_for('donordir') }}">Donors</a></li>
+          <li><a href="{{ url_for('eligiblity') }}">Eligiblity</a></li>
           <li><a href=" {{ url_for('register') }}">Register</a></li>
+          <a href="{{ url_for('login') }}"><button>Login</button></a>
         </ul>
       </nav>
-      <a class="cta"><button>Contact</button></a>
     </div>
 
     <div class="login">

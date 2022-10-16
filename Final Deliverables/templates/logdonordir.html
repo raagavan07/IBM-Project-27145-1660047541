@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plasma Donor Application</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/logdonordir.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img
+        src="/static/images/logor.png"
+        alt="Logo"
+        width="15%"
+        height="2000%"
+      />
+      <h2>COVID-19 PLASMA DONATION</h2>
+      <i class="fa fa-html5" aria-hidden="true"></i>
+      <nav class="first">
+        <ul class="nav_links">
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('donordir') }}">Donors</a></li>
+          <li><a href="{{ url_for('eligiblity') }}">Eligiblity</a></li>
+          <li><a href=" {{ url_for('register') }}">Register</a></li>
+          <a href="{{ url_for('login') }}"><button>Login</button></a>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="prof">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Age</th>
+              <th scope="col">District</th>
+              <th scope="col">Blood Group</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in data %}
+            <tr>
+              <td class="noBorder">{{item['UNAME']}}</td>
+              <td class="noBorder">{{item['AGE']}}</td>
+              <td class="noBorder">{{item['DISTRICT']}}</td>
+              <td class="noBorder">{{item['BLOOD_GROUP']}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
