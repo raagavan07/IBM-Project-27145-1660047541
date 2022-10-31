@@ -17,6 +17,8 @@ html {
 body {
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
+  position: relative;
   font-family: "Open Sans", sans-serif;
   background: #092756;
   background: -moz-radial-gradient(
@@ -156,8 +158,14 @@ p {
 }
 .wrapper {
   background-color: transparent;
-  width: 100%;
-  min-height: 100vh;
+  /* width: 100%;
+  min-height: 100vh; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -150px 0 0 -150px;
+  width: 300px;
+  height: 300px;
 }
 .wrapper .line {
   width: 50%;
@@ -165,7 +173,7 @@ p {
   height: 1px;
   background-color: #c3d2e3;
 }
-.table {
+/* .table {
   width: 60%;
   margin: 0 auto;
 }
@@ -236,32 +244,37 @@ p {
   background-color: transparent;
   text-align: right;
 }
-.pagination {
-  display: flex;
-  position: relative;
-  right: 10px;
-  justify-content: flex-end;
-  gap: 5px;
+*/ .plasmareq {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -150px 0 0 -150px;
+  width: 300px;
+  height: 300px;
 }
-.pagination .page {
-  width: 10px;
-  height: 30px;
-  flex-basis: 30px;
-  text-align: center;
-  box-sizing: border-box;
-  padding-top: 6px;
-  background: #f0f3f4;
-  border-radius: 7px;
-  color: transparent;
-  cursor: pointer;
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 13px;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2),
+    0 1px 1px rgba(255, 255, 255, 0.2);
+  -webkit-transition: box-shadow 0.5s ease;
+  -moz-transition: box-shadow 0.5s ease;
+  -o-transition: box-shadow 0.5s ease;
+  -ms-transition: box-shadow 0.5s ease;
+  transition: box-shadow 0.5s ease;
 }
-.pagination .page.active {
-  background-color: #1f74ff;
-  color: white;
-  font-weight: 600;
-}
-@media (max-width: 700px) {
-  .table {
-    width: 90%;
-  }
+
+input:focus {
+  box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4),
+    0 1px 1px rgba(255, 255, 255, 0.2);
 }

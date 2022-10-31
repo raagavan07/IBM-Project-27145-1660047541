@@ -22,37 +22,65 @@
       <i class="fa fa-html5" aria-hidden="true"></i>
       <nav class="first">
         <ul class="nav_links">
-          <li><a href="{{ url_for('index') }}">Home</a></li>
-          <li><a href="{{ url_for('donordir') }}">Donors</a></li>
-          <li><a href="{{ url_for('eligiblity') }}">Eligiblity</a></li>
-          <li><a href=" {{ url_for('register') }}">Register</a></li>
-          <a href="{{ url_for('login') }}"><button>Login</button></a>
+          <li><a href="{{ url_for('homepage') }}">Home</a></li>
+          <li><a href="{{ url_for('logdonordir')}}">Donor Directory</a></li>
+          <drp class="dropdown">
+            <button class="dropbtn">{{ session["name"] }}</button>
+            <cdrp class="dropdown-content">
+              <a href="{{ url_for('profile') }} ">Profile</a>
+              <a href="#">Change Password</a>
+              <a href="{{ url_for('logout') }} ">Logout</a>
+            </cdrp>
+          </drp>
         </ul>
       </nav>
     </div>
 
-    <div class="prof">
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Username</th>
-              <th scope="col">Age</th>
-              <th scope="col">District</th>
-              <th scope="col">Blood Group</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in data %}
-            <tr>
-              <td class="noBorder">{{item['UNAME']}}</td>
-              <td class="noBorder">{{item['AGE']}}</td>
-              <td class="noBorder">{{item['DISTRICT']}}</td>
-              <td class="noBorder">{{item['BLOOD_GROUP']}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+    <div class="wrapper">
+      <div class="title">
+        Donor Directory
+        <div class="line"></div>
+      </div>
+      <div class="container">
+        <div class="table">
+          <table cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <td colspan="2" style="padding-right: 10px">
+                  Available Donors
+                </td>
+                <td colspan="2" style="padding: left 10px">
+                  <input class="search" placeholder="Search..." />
+                </td>
+              </tr>
+              <tr>
+                <td>Username</td>
+                <td>Age</td>
+                <td>District</td>
+                <td>Blood Group</td>
+                <td>Donoation Request</td>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in data %}
+              <tr>
+                <td>{{item['UNAME']}}</td>
+                <td>{{item['AGE']}}</td>
+                <td>{{item['DISTRICT']}}</td>
+                <td>{{item['BLOOD_GROUP']}}</td>
+                <td>
+                  <input
+                    type="button"
+                    name="rp"
+                    value="Request Plasma"
+                    style="background-color: transparent"
+                  />
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </body>

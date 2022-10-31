@@ -32,62 +32,75 @@
     </div>
     <div class="wrapper">
       <div class="title">
-        Donor Directory
+        Request Plasma
         <div class="line"></div>
       </div>
-      <div class="container">
-        <div class="table">
-          <table cellspacing="0" cellpadding="0">
-            <thead>
-              <tr>
-                <td colspan="2" style="padding-right: 10px">
-                  Available Donors
-                </td>
-                <td colspan="2" style="padding: left 10px">
-                  <input class="search" placeholder="Search..." />
-                </td>
-              </tr>
-              <tr>
-                <td>Username</td>
-                <td>Age</td>
-                <td>District</td>
-                <td>Blood Group</td>
-                <td>Donoation Request</td>
-              </tr>
-            </thead>
-            <tbody>
-              {% for item in data %}
-              <tr>
-                <td>{{item['UNAME']}}</td>
-                <td>{{item['AGE']}}</td>
-                <td>{{item['DISTRICT']}}</td>
-                <td>{{item['BLOOD_GROUP']}}</td>
-                <td>
-                  <input
-                    type="button"
-                    name="rp"
-                    value="Request Plasma"
-                    style="background-color: transparent"
-                  />
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-            <!-- <tfoot>
-              <tr>
-                <td colspan="100%">
-                  <div class="pagination">
-                    <div class="page active">1</div>
-                    <div class="page">2</div>
-                    <div class="page">3</div>
-                    <div class="page">4</div>
-                    <div class="page">5</div>
-                  </div>
-                </td>
-              </tr>
-            </tfoot> -->
-          </table>
-        </div>
+      <div class="plasmareq">
+        <br /><br />
+        <form method="post">
+          <label> Patient's Name </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Patient Name"
+            required="required"
+          />
+          <br />
+          <label> Age </label>
+          <input
+            type="number"
+            min="1"
+            name="age"
+            placeholder="Age"
+            required="required"
+          />
+          <br />
+          <label> Blood Group </label>
+          <input
+            type="text"
+            name="bgrp"
+            placeholder="Blood Group"
+            required="required"
+          />
+          <br />
+          <label> Patient's Mobile Number </label>
+          <input
+            type="int"
+            name="mno"
+            placeholder="Phone Number"
+            required="required"
+          />
+          <br />
+          <label> Hospital Name </label>
+          <input
+            type="text"
+            name="hname"
+            placeholder="Hospital Name"
+            required="required"
+          />
+          <br />
+          <label> Hospital Address </label>
+          <input
+            type="text"
+            name="addr"
+            placeholder="Address"
+            required="required"
+          />
+          <br />
+          <label> Hospital District </label>
+          <input
+            type="text"
+            name="dis"
+            placeholder="District"
+            required="required"
+          />
+          <br /><br />
+          <button type="submit" class="btn btn-primary btn-block btn-large">
+            Search for Donors
+          </button>
+          <br />
+          <br />
+        </form>
       </div>
     </div>
   </body>

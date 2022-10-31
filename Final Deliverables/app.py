@@ -8,11 +8,12 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+donorEmail = ""
+
 
 @app.route('/')
 def index():
     if not session.get("name"):
-        # if not there in the session then redirect to the login page
         return render_template("index.html")
     return redirect("/homepage")
 
@@ -56,16 +57,45 @@ def eligiblity():
     return render_template('eligiblity.html')
 
 
-@ app.route('/donordir')
+@ app.route('/reqform')
+def reqform():
+    return render_template('reqform.html')
+
+
+@ app.route('/donordir', methods=['GET', 'POST'])
 def donordir():
-    stmt = "SELECT uname,age,district,blood_group FROM creds WHERE willing='Y'"
-    res = ibm_db.exec_immediate(conn, stmt)
-    data = ibm_db.fetch_assoc(res)
+
     l = []
-    print(data)
     l.append(data)
-    print("L: ")
-    print(l)
+    if request.method == 'POST':
+        pname = request.form['name']
+        age = request.form['age']
+        pbgrp = request.form['bgrp']
+        pmno = request.form['mno']
+        hname = request.form['hname']
+        haddr = request.form['addr']
+        pdis = request.form['dis']
+        stmt = "SELECT uname,email,blood_group FROM creds WHERE willing='Y' AND  district=?"
+        prep = ibm_db.prepate(conn, stmt)
+        ibm_db.bind_param(prep, 1, pdis)
+        res = ibm_db.execute(prep)
+        data = ibm_db.fetch_assoc(prep)
+        if (data):
+            for item in data:
+                uname = item["UNAME"]
+                email = item["EMAIL"]
+                dbgrp = item["BLOOD_GROUP"]
+
+                if (plasmaMatchCheck(pbgrp, dbgrp)):
+                    # Send Mail to Them
+                    # Send Mail status to recepient
+                    print("D Avail")
+                else:
+                    # Display No Donor Avail
+                    print("D Unavail")
+
+    return render_template('reqform.html', mail=request.form['ml'], uname=request.form['name'])
+
     if not session.get("name"):
         return render_template('donordir.html', data=l)
     return render_template('logdonordir.html', data=l)
@@ -79,7 +109,7 @@ def logdonordir():
     l = []
     l.append(data)
     if not session.get("name"):
-        return render_template('donordir', data=l)
+        return render_template('donordir.html', data=l)
     return render_template('logdonordir.html', data=l)
 
 
@@ -197,6 +227,5 @@ def register():
 
 if __name__ == "__main__":
     app.run(use_reloader=True)
-
 # Auto Reload of Site
 # flask --app app.py --debug run
