@@ -2,13 +2,24 @@ from urllib import request
 from flask import Flask, render_template, redirect, request, session
 from flask_session import Session
 from connection import *
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-donorEmail = ""
+mail = Mail(app)  # instantiate the mail class
+mail.init_app(app)
+
+# configuration of mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'ssashokkumar@student.tce.edu'
+app.config['MAIL_PASSWORD'] = 'Summa@ITOM'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 
 @app.route('/')
@@ -64,41 +75,45 @@ def reqform():
 
 @ app.route('/donordir', methods=['GET', 'POST'])
 def donordir():
-
     l = []
-    l.append(data)
-    if request.method == 'POST':
-        pname = request.form['name']
-        age = request.form['age']
-        pbgrp = request.form['bgrp']
-        pmno = request.form['mno']
-        hname = request.form['hname']
-        haddr = request.form['addr']
-        pdis = request.form['dis']
-        stmt = "SELECT uname,email,blood_group FROM creds WHERE willing='Y' AND  district=?"
-        prep = ibm_db.prepate(conn, stmt)
-        ibm_db.bind_param(prep, 1, pdis)
-        res = ibm_db.execute(prep)
-        data = ibm_db.fetch_assoc(prep)
-        if (data):
-            for item in data:
-                uname = item["UNAME"]
-                email = item["EMAIL"]
-                dbgrp = item["BLOOD_GROUP"]
-
-                if (plasmaMatchCheck(pbgrp, dbgrp)):
-                    # Send Mail to Them
-                    # Send Mail status to recepient
-                    print("D Avail")
-                else:
-                    # Display No Donor Avail
-                    print("D Unavail")
-
-    return render_template('reqform.html', mail=request.form['ml'], uname=request.form['name'])
-
+    pdata = []
     if not session.get("name"):
-        return render_template('donordir.html', data=l)
-    return render_template('logdonordir.html', data=l)
+        if request.method == 'POST':
+            pname = request.form['name']
+            age = request.form['age']
+            pbgrp = request.form['bgrp']
+            pmno = request.form['mno']
+            hname = request.form['hname']
+            haddr = request.form['addr']
+            pdis = request.form['dis']
+            stmt = "SELECT uname,email,blood_group FROM creds WHERE willing='Y' AND  district=?"
+            prep = ibm_db.prepare(conn, stmt)
+            ibm_db.bind_param(prep, 1, pdis)
+            res = ibm_db.execute(prep)
+            data = ibm_db.fetch_assoc(prep)
+            print("Plus")
+            l.append(data)
+            pdata.append(pname)
+            pdata.append(age)
+            pdata.append(pmno)
+            pdata.append(hname)
+            pdata.append(haddr)
+            pdata.append(pdis)
+            if (data):
+                for item in l:
+                    uname = item['UNAME']
+                    email = item['EMAIL']
+                    dbgrp = item['BLOOD_GROUP']
+                    print(uname+" "+dbgrp)
+                    if (plasmaMatchCheck(pbgrp, dbgrp)):
+                        plasmaRequestMail(email, pdata)
+                return render_template('donordir.html', req=len(l))
+            else:
+                # Display No Donor Avail
+                print("D Unavail")
+        return render_template('donordir.html', req=0)
+    else:
+        return render_template('logdonordir.html')
 
 
 @ app.route('/logdonordir')
@@ -223,6 +238,23 @@ def register():
         else:
             print("Account Already Exist")
     return render_template('register.html')
+
+
+def plasmaRequestMail(demail, pdata):
+    msg = Message(
+        'Important - Plasma Request',
+        sender='requestplasma@plasmadonorapp.com',
+        recipients=[demail]
+    )
+    try:
+        cont = 'Hello Donor, We are in need of your help to save a Life. \n Patient Name: ' + \
+            pdata[0]+"\n Patient Age: "+pdata[1]+"\n Patient Mobile Number: " + \
+            pdata[2]+"\n Hospital Name: "+pdata[3]+"\n Hospital Address: "+pdata[4] + \
+            "\n\n We kindly request Donors to verify the Paitent data via Mobile Number and Hospital data before proceeding."
+        msg.body = cont
+        mail.send(msg)
+    except:
+        print('Unable to send Email')
 
 
 if __name__ == "__main__":

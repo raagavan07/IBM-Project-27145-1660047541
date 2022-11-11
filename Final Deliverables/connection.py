@@ -65,11 +65,13 @@ except:
 #     dictionary = ibm_db.fetch_both(res)
 
 def plasmaMatchCheck(pbgrp, dbgrp):
-    if dbgrp == "AB+" or dbgrp == "AB-":
+    if (dbgrp == "AB+" or dbgrp == "AB-"):
         return True
-    elif (dbgrp == "A+" or dbgrp == "A-") and (pbgrp == "A+" or pbgrp == "A-" or pbgrp == "O+" or pbgrp == "O-"):
+    elif ((dbgrp == "A+" or dbgrp == "A-") and (pbgrp == "A+" or pbgrp == "A-" or pbgrp == "O+" or pbgrp == "O-")):
         return True
-    elif (dbgrp == "B+" or dbgrp == "B-") and (pbgrp == "B+" or pbgrp == "B-" or pbgrp == "O+" or pbgrp == "O-"):
+    elif ((dbgrp == "B+" or dbgrp == "B-") and (pbgrp == "B+" or pbgrp == "B-" or pbgrp == "O+" or pbgrp == "O-")):
         return True
-    elif (dbgrp == "O+" or dbgrp == "O-") and (pbgrp == "O+" or pbgrp == "O-"):
+    elif ((dbgrp == "O+" or dbgrp == "O-") and (pbgrp == "O+" or pbgrp == "O-")):
         return True
+    else:
+        return False
