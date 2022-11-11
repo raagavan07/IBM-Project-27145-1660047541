@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plasma Donor Application</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=PT Mono"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img
+        src="/static/images/logor.png"
+        alt="Logo"
+        width="15%"
+        height="2000%"
+      />
+      <h2>COVID-19 PLASMA DONATION</h2>
+      <i class="fa fa-html5" aria-hidden="true"></i>
+      <nav class="first">
+        <ul class="nav_links">
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('donordir') }}">Donors</a></li>
+          <li><a href="{{ url_for('eligiblity') }}">Eligiblity</a></li>
+          <li><a href=" {{ url_for('register') }}">Register</a></li>
+          <a href="{{ url_for('login') }}"><button>Login</button></a>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      <div class="quote">
+        <img
+          src="/static/images/donate.gif"
+          alt="HomePage"
+          width="40%"
+          height="10000%"
+        />
+        <!-- <text>
+          "Sometimes Money cannot save Life <br /><br />
+          but <br /><br />
+          Donated Plasma can!"</text
+        > -->
+      </div>
+    </div>
+  </body>
+</html>
