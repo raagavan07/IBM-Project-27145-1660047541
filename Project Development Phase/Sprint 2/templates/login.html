@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img
+        src="/static/images/logor.png"
+        alt="Logo"
+        width="15%"
+        height="2000%"
+      />
+      <h2>COVID-19 PLASMA DONATION</h2>
+      <i class="fa fa-html5" aria-hidden="true"></i>
+      <nav class="first">
+        <ul class="nav_links">
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('donordir') }}">Donors</a></li>
+          <li><a href="{{ url_for('eligiblity') }}">Eligiblity</a></li>
+          <li><a href=" {{ url_for('register') }}">Register</a></li>
+          <a href="{{ url_for('login') }}"><button>Login</button></a>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="login">
+      <h1>Login</h1>
+      <br /><br />
+      <form method="post">
+        <input type="text" name="ml" placeholder="E-Mail" required="required" />
+        <br />
+        <input
+          type="password"
+          name="p"
+          placeholder="Password"
+          required="required"
+        />
+        <br /><br />
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Let me in.
+        </button>
+        <br />
+        <br />
+        <h4>{{ lStatus }}</h4>
+      </form>
+    </div>
+  </body>
+</html>
