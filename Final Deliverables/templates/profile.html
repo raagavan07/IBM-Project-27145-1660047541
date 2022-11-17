@@ -1,91 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plasma Donor Application</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/profile.css') }}"
-    />
-  </head>
-  <body>
-    <div class="header">
-      <img
-        src="/static/images/logor.png"
-        alt="Logo"
-        width="15%"
-        height="2000%"
-      />
-      <h2>COVID-19 PLASMA DONATION</h2>
-      <i class="fa fa-html5" aria-hidden="true"></i>
-      <nav class="first">
-        <ul class="nav_links">
-          <li><a href="{{ url_for('homepage') }}">Home</a></li>
-          <li><a href="#">Donor Directory</a></li>
-          <div class="dropdown">
-            <button class="dropbtn">{{ session["name"] }}</button>
-            <div class="dropdown-content">
-              <a href="{{ url_for('profile') }}">Profile</a>
-              <a href="#">Change Password</a>
-              <a href="{{ url_for('logout') }} ">Logout</a>
-            </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plasma Donor Application</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}" />
+</head>
+
+<body>
+  <div class="header">
+    <img src="/static/images/logor.png" alt="Logo" width="15%" height="2000%" />
+    <h2>COVID-19 PLASMA DONATION</h2>
+    <i class="fa fa-html5" aria-hidden="true"></i>
+    <nav class="first">
+      <ul class="nav_links">
+        <li><a href="{{ url_for('homepage') }}">Home</a></li>
+        <li><a href="{{ url_for('logdonordir') }}">Donor Directory</a></li>
+        <div class="dropdown">
+          <button class="dropbtn">{{ session["name"] }}</button>
+          <div class="dropdown-content">
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }} ">Logout</a>
           </div>
-        </ul>
-      </nav>
-    </div>
-    <div class="prof">
-      <h1>Profile</h1>
-      <br /><br />
-      <form method="post">
-        <label style="margin-right: 15px"> Username </label>
-        <input type="text" name="name" value="{{ session['name'] }}" />
+        </div>
+      </ul>
+    </nav>
+  </div>
+  <div class="prof">
+    <h1>Profile
+      <div class="line"></div>
+    </h1>
+    <form method="post">
+      <label style="margin-right: 15px"> Username </label>
+      <input type="text" name="name" value="{{ session['name'] }}" />
 
-        <label style="margin-right: 15px"> E-Mail </label>
-        <input type="text" name="email" value="{{ session['email'] }}" />
+      <label style="margin-right: 15px"> E-Mail </label>
+      <input type="text" name="email" value="{{ session['email'] }}" />
 
-        <label style="margin-right: 15px"> Age </label>
-        <input type="number" name="age" value="{{ age }}" />
+      <label style="margin-right: 15px"> Age </label>
+      <input type="number" name="age" value="{{ age }}" />
 
-        <label style="margin-right: 15px"> Sex </label>
-        <input type="text" name="sex" value="{{ sex }}" />
+      <label style="margin-right: 15px"> Gender </label>
+      <input type="text" name="sex" value="{{ sex }}" />
 
-        <label style="margin-right: 15px"> State </label>
-        <input type="text" name="state" value="{{ state }}" />
+      <label style="margin-right: 15px"> State </label>
+      <input type="text" name="state" value="{{ state }}" />
 
-        <label style="margin-right: 15px"> District </label>
-        <input type="text" name="dis" value="{{ dis }}" />
+      <label style="margin-right: 15px"> District </label>
+      <input type="text" name="dis" value="{{ dis }}" />
 
-        <label style="margin-right: 15px"> Phone Number </label>
-        <input type="text" name="phno" value="{{ phno }}" />
+      <label style="margin-right: 15px"> Phone Number </label>
+      <input type="text" name="phno" value="{{ phno }}" />
 
-        <label style="margin-right: 15px"> Blood Group </label>
-        <input type="text" name="bgrp" value="{{ bgrp }}" />
-        <br />
-        <div
-          style="
+      <label style="margin-right: 15px"> Blood Group </label>
+      <input type="text" name="bgrp" value="{{ bgrp }}" />
+      <br />
+      <div style="
             display: flex;
             align-items: center;
             justify-content: space-between;
-          "
-        >
-          <input
-            type="checkbox"
-            name="will"
-            value="Y"
-            style="display: inline"
-            class="default"
-          />
-          <label style="margin-right: 15px"> Willing To Donate Plasma</label>
-        </div>
-        <br /><br />
-        <button type="submit" class="btn btn-primary btn-block btn-large">
-          Update Profile
-        </button>
-        <br /><br />
-        <br />
-      </form>
-    </div>
-  </body>
+          ">
+        <input id="will" type="checkbox" name="will" value="Y" style="all: none" class="default" />
+        <label style="margin-right: 15px"> Willing To Donate Plasma</label>
+      </div>
+      <br /><br />
+      <button type="submit" class="btn btn-primary btn-block btn-large">
+        Update Profile
+      </button>
+      <br /><br />
+      <br />
+    </form>
+  </div>
+</body>
+
 </html>

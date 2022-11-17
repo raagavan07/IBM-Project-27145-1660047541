@@ -12,7 +12,7 @@
 <body>
   {% if(req) %}
   <script language="JavaScript">
-    alert('Successfully Send Mail to Possible donors')
+    alert('Successfully Send Mail to {{req}} Donors')
   </script>
   {% endif %}
   <div class="header">
@@ -22,7 +22,7 @@
     <nav class="first">
       <ul class="nav_links">
         <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('donordir') }}">Donors</a></li>
+        <li><a href="{{ url_for('donordir') }}">Request Plasma</a></li>
         <li><a href="{{ url_for('eligiblity') }}">Eligiblity</a></li>
         <li><a href=" {{ url_for('register') }}">Register</a></li>
         <a href="{{ url_for('login') }}"><button>Login</button></a>
@@ -31,7 +31,10 @@
   </div>
   <div class="wrapper">
     <div class="title">
-      Request Plasma
+      <div class="row">
+        <img src="/static/images/formfill.gif" alt="HomePage" width="40%" height="10000%" />
+        Request Plasma
+      </div>
       <div class="line"></div>
     </div>
     <div class="plasmareq">
@@ -60,7 +63,7 @@
         <br /><br />
         <center>
           <button type="submit" class="btn btn-primary btn-block btn-large">
-            Search for Donors
+            Notify Donors
           </button>
         </center>
         <br />

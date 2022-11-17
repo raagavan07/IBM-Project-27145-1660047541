@@ -228,7 +228,7 @@ p {
   box-shadow: 0 25px 20px -25px #000;
 }
 .table table input.search {
-  width: 100%;
+  width: 50%;
   padding: 8px;
   box-sizing: border-box;
   border-radius: 10px;
@@ -247,7 +247,7 @@ p {
 .table table thead td {
   font-size: 18px;
   font-weight: 600;
-  color: #666;
+  color: rgb(255, 255, 255);
   padding: 10px;
 }
 .table table thead tr:nth-child(1) {
@@ -264,7 +264,7 @@ p {
 }
 .table table tbody tr td {
   padding: 10px;
-  color: #666;
+  color: rgb(255, 255, 255);
 }
 .table table tbody tr:hover {
   transform: translateY(-2px);

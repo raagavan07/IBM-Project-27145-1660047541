@@ -275,11 +275,18 @@ body {
   height: 300px;
 }
 
+.login .line {
+  width: 100%;
+  margin: 50px auto 0 auto;
+  height: 1px;
+  background-color: #c3d2e3;
+}
 .login h1 {
-  color: #fff;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  letter-spacing: 1px;
   text-align: center;
+  padding: 40px 0;
+  font-size: 40px;
+  font-weight: 300;
+  color: white;
 }
 
 input {

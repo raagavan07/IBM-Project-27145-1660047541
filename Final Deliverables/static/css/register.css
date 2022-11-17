@@ -268,18 +268,25 @@ p {
 
 .register {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   margin: -150px 0 0 -150px;
   width: 300px;
   height: 300px;
 }
 
+.register .line {
+  width: 100%;
+  margin: 50px auto 0 auto;
+  height: 1px;
+  background-color: #c3d2e3;
+}
 .register h1 {
-  color: #fff;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  letter-spacing: 1px;
   text-align: center;
+  padding: 40px 0;
+  font-size: 40px;
+  font-weight: 300;
+  color: white;
 }
 
 input {

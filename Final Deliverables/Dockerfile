@@ -5,6 +5,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY . /app
 RUN pip install -r requirements.txt
-EXPOSE 5001
+RUN pip install ibm_db
+EXPOSE 5000
 ENTRYPOINT [ "python" ]
 CMD [ "app.py" ]

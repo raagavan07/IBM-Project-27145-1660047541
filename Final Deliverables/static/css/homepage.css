@@ -17,6 +17,8 @@ html {
 body {
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
+  position: relative;
   font-family: "Open Sans", sans-serif;
   background: #092756;
   background: -moz-radial-gradient(
@@ -192,4 +194,26 @@ p {
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+text {
+  text-align: center;
+  text-transform: uppercase;
+  font: 1.8rem/1.4 Georgia, serif;
+  font-size: 40px;
+}
+
+.quote {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.this {
+  font-size: 18px;
+  color: #fff;
+  line-height: 24px;
+  margin: 20px 10%;
 }

@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plasma Donor Application</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/homepage.css') }}"
-    />
-    <link href="http://fonts.cdnfonts.com/css/oregon" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="header">
-      <img
-        src="/static/images/logor.png"
-        alt="Logo"
-        width="15%"
-        height="2000%"
-      />
-      <h2>COVID-19 PLASMA DONATION</h2>
-      <i class="fa fa-html5" aria-hidden="true"></i>
-      <nav class="first">
-        <ul class="nav_links">
-          <li><a href="{{ url_for('homepage') }}">Home</a></li>
-          <li><a href="{{ url_for('logdonordir')}}">Donor Directory</a></li>
-          <drp class="dropdown">
-            <button class="dropbtn">{{ session["name"] }}</button>
-            <cdrp class="dropdown-content">
-              <a href="{{ url_for('profile') }} ">Profile</a>
-              <a href="#">Change Password</a>
-              <a href="{{ url_for('logout') }} ">Logout</a>
-            </cdrp>
-          </drp>
-        </ul>
-      </nav>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plasma Donor Application</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}" />
+  <link href="http://fonts.cdnfonts.com/css/oregon" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="header">
+    <img src="/static/images/logor.png" alt="Logo" width="15%" height="2000%" />
+    <h2>COVID-19 PLASMA DONATION</h2>
+    <i class="fa fa-html5" aria-hidden="true"></i>
+    <nav class="first">
+      <ul class="nav_links">
+        <li><a href="{{ url_for('homepage') }}">Home</a></li>
+        <li><a href="{{ url_for('logdonordir')}}">Donor Directory</a></li>
+        <drp class="dropdown">
+          <button class="dropbtn">{{ session["name"] }}</button>
+          <cdrp class="dropdown-content">
+            <a href="{{ url_for('profile') }} ">Profile</a>
+            <a href="{{ url_for('logout') }} ">Logout</a>
+          </cdrp>
+        </drp>
+      </ul>
+    </nav>
+  </div>
+  <div>
+    <center>
+      <text>Welcome Hero</text>
+    </center>
+    <br>
+    <br>
+    <div class="quote">
+
+      <img src="/static/images/homepage img.jpg" alt="HomePage" width="40%" height="400px" />
+      <p class="this">
+        Thank you for your interest in becoming a Plasma Donor! <br><br>Your donation helps save the lives of countless
+        people who are in need of this life-saving treatment. Your generosity is
+        greatly appreciated and we are truly grateful for your contribution.
     </div>
-    <h1>homepage</h1>
-  </body>
+</body>
+
 </html>

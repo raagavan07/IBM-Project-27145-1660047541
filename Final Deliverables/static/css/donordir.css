@@ -83,7 +83,7 @@ body {
   padding-bottom: 10px;
   /* align-items: center; */
   justify-content: space-between;
-  padding: 20px 10% 200px;
+  padding: 20px 8% 200px;
 }
 
 a,
@@ -156,6 +156,12 @@ p {
   font-weight: 300;
   color: white;
 }
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .wrapper {
   background-color: transparent;
   /* width: 100%;

@@ -13,12 +13,12 @@ mail = Mail(app)  # instantiate the mail class
 mail.init_app(app)
 
 # configuration of mail
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'ssashokkumar@student.tce.edu'
-app.config['MAIL_PASSWORD'] = 'Summa@ITOM'
+app.config['MAIL_SERVER'] = 'mail.smartinternz.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = '917719it127@smartinternz.com'
+app.config['MAIL_PASSWORD'] = 'PNTIBMDh'
 app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USE_SSL'] = False
 mail = Mail(app)
 
 
@@ -258,6 +258,6 @@ def plasmaRequestMail(demail, pdata):
 
 
 if __name__ == "__main__":
-    app.run(use_reloader=True)
+    app.run(host='0.0.0.0', use_reloader=True)
 # Auto Reload of Site
 # flask --app app.py --debug run
